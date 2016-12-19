@@ -24,18 +24,13 @@ class OfflineChecker : NSObject {
 	private(set) var networkConnection = NetworkConnection.cellular
 	let notificationCenter = NotificationCenter()
 	
-	internal var _enabled : Bool = false;
 	var enabled: Bool {
-		set {
-			_enabled = newValue
-			if _enabled {
+		didSet {
+			if self.enabled {
 				self.reachability?.startNotifier()
 			} else {
 				self.reachability?.stopNotifier()
 			}
-		}
-		get {
-			return _enabled
 		}
 	}
 	
