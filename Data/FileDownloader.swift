@@ -82,7 +82,7 @@ class FileDownloader: NSObject, URLSessionDownloadDelegate {
 		}
 	}
 	
-	public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+	internal func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
 		guard let url = downloadTask.originalRequest?.url else {
 			return
 		}
@@ -141,7 +141,7 @@ class FileDownloader: NSObject, URLSessionDownloadDelegate {
 		}
 	}
 	
-	public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+	internal func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
 		guard let url = downloadTask.originalRequest?.url else {
 			return
 		}
@@ -157,7 +157,7 @@ class FileDownloader: NSObject, URLSessionDownloadDelegate {
 		}
 	}
 	
-	public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+	internal func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
 		guard let url = task.originalRequest?.url else {
 			return
 		}
