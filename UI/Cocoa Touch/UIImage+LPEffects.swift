@@ -69,7 +69,7 @@ extension UIImage {
 		return scaledImage
 	}
 	
-	func roundedImageWithSize(size: CGSize) -> UIImage? {
+	func roundedImage(size: CGSize) -> UIImage? {
 		let width = self.size.width
 		let height = self.size.height
 		

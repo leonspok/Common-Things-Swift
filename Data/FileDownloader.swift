@@ -8,12 +8,12 @@
 
 import UIKit
 
-enum FileDownloaderError : Error {
-	case fromURLIsEmpty
-	case destionationURLIsEmpty
-}
-
 class FileDownloader: NSObject, URLSessionDownloadDelegate {
+	public enum OptionsError : Error {
+		case fromURLIsEmpty
+		case destionationURLIsEmpty
+	}
+	
 	public static let sharedDownloader = FileDownloader()
 	
 	internal var successBlocks = [URL : [() -> Void]]()
@@ -34,10 +34,10 @@ class FileDownloader: NSObject, URLSessionDownloadDelegate {
 	
 	public func downloadFile(fromURL: URL!, destinationURL: URL!, progress: ((Int64, Int64) -> Void)?, success: (() -> Void)?, failure: ((Error) -> Void)?) throws {
 		if fromURL.absoluteString.characters.count == 0 {
-			throw FileDownloaderError.fromURLIsEmpty
+			throw OptionsError.fromURLIsEmpty
 		}
 		if destinationURL.path.characters.count == 0 {
-			throw FileDownloaderError.destionationURLIsEmpty
+			throw OptionsError.destionationURLIsEmpty
 		}
 		
 		var shouldDownload = false
